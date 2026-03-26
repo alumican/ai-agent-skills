@@ -13,17 +13,15 @@ Reusable skills for AI coding agents (Claude Code, etc.).
 Install directly via Claude Code's plugin system:
 
 ```
-# Add this marketplace (one-time setup)
+# 1. Add this marketplace (one-time setup)
 /plugin marketplace add alumican/ai-agent-skills
-```
 
-```
-# Install the fresh-eyes skill
+# 2. Install the fresh-eyes skill
 /plugin install fresh-eyes@ai-agent-skills
 ```
 
 ```
-# Use it
+# 3. Use it
 /fresh-eyes
 /fresh-eyes path/to/dir
 /fresh-eyes packages/ "API usability"
