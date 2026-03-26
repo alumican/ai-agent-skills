@@ -1,0 +1,10 @@
+{
+  "name": "fresh-eyes",
+  "version": "1.0.0",
+  "description": "Spawn isolated agents to review code/docs with zero prior context",
+  "author": {
+    "name": "alumican"
+  },
+  "repository": "https://github.com/alumican/ai-agent-skills",
+  "license": "MIT"
+}

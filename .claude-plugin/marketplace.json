@@ -1,0 +1,24 @@
+{
+  "name": "ai-agent-skills",
+  "owner": {
+    "name": "alumican"
+  },
+  "metadata": {
+    "description": "Reusable skills for Claude Code — isolated-agent reviews and more."
+  },
+  "plugins": [
+    {
+      "name": "fresh-eyes",
+      "source": {
+        "source": "github",
+        "repo": "alumican/ai-agent-skills"
+      },
+      "description": "Spawn isolated agents to review code/docs with zero prior context",
+      "author": {
+        "name": "alumican"
+      },
+      "license": "MIT",
+      "repository": "https://github.com/alumican/ai-agent-skills"
+    }
+  ]
+}

@@ -8,7 +8,26 @@ Reusable skills for AI coding agents (Claude Code, etc.).
 |-------|-------------|
 | [fresh-eyes](skills/fresh-eyes/) | Spawn isolated agents to review code/docs with zero prior context |
 
-## Installation
+## Plugin Marketplace
+
+Install directly via Claude Code's plugin system:
+
+```
+# Add this marketplace (one-time setup)
+/plugin marketplace add alumican/ai-agent-skills
+
+# Install the fresh-eyes skill
+/plugin install fresh-eyes@ai-agent-skills
+
+# Use it
+/fresh-eyes
+/fresh-eyes path/to/dir
+/fresh-eyes packages/ "API usability"
+```
+
+Update later with `/plugin marketplace update ai-agent-skills`.
+
+## Manual Installation
 
 Add a skill to your project's `.claude/commands/` or user-level `~/.claude/skills/`:
 
