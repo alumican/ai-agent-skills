@@ -107,6 +107,7 @@ Output all responses in the language the user uses to interact with Claude. If t
 ## What's working well
 - aaa
 - bbb
+- …
 
 ---
 
@@ -115,24 +116,29 @@ Output all responses in the language the user uses to interact with Claude. If t
 ### Bugs
 - aaa
 - bbb
+- …
 
 ### Inconsistency
 - aaa
 - bbb
+- …
 
 ### Gaps
 - aaa
 - bbb
+- …
 
 ### Suggestions
 - aaa
 - bbb
+- …
 
 ---
 
 ## Synthesis
 - aaa
 - bbb
+- …
 
 ---
 
