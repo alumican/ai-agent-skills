@@ -27,7 +27,45 @@ For example:
 2. **Spawn one or more Agent(s)** — each agent is given ONLY the target directory path and told it has NO access outside of it
 3. **Collect the report** and present it to the user
 
+## Model Selection
+
+Determine the subagent model using a selection UI **before** spawning any agent. The model must be confirmed by the user before execution begins.
+
+| Current model | Behavior |
+|---|---|
+| **Opus** | Automatically use Opus — no prompt needed |
+| **Sonnet** | Ask the user to choose: Opus (recommended) or Sonnet |
+| **Haiku** | Ask the user to choose: Opus (recommended), Sonnet, or Haiku |
+
+When asking, present the options as a numbered selection and note that Opus is recommended for the most thorough review.
+
+Example (current model is Opus): No asking
+```
+Current model is Opus. Using Opus for the review.
+```
+
+Example (current model is Sonnet): Ask user
+```
+Current model is Sonnet, which model would you like to review?
+  1. Opus (recommended — most thorough)
+  2. Sonnet
+
+Enter 1 / 2:
+```
+
+Example (current model is Haiku): Ask user
+```
+Current model is Haiku, which model would you like to review?
+  1. Opus (recommended — most thorough)
+  2. Sonnet
+  3. Haiku
+
+Enter 1 / 2 / 3:
+```
+
 ## Agent Spawning Rules
+
+> **Important:** Reviews MUST always be performed by spawning a new subagent. Never reuse an agent that carries prior conversation context.
 
 - Each agent's prompt must:
   - State clearly that the agent is read-only: it must NOT create, edit, or delete any files
@@ -88,6 +126,23 @@ When the target is large (e.g., a monorepo with multiple packages), spawn **sepa
 
 When using multiple agents, launch them **in parallel**.
 
+## Execution Notification
+
+Before spawning any subagent(s), notify the user with the following information:
+
+- The target directory being reviewed
+- The model assigned to the subagent
+- For multi-agent reviews, repeat the above for each agent (one line per agent)
+
+Example (single agent):
+> Starting fresh-eyes review — spawning 1 subagent:
+> - Agent 1 (Opus): `./src`
+
+Example (multi-agent):
+> Starting fresh-eyes review — spawning 2 subagents:
+> - Agent 1(Opus): `./src/api`
+> - Agent 2(Opus): `./src/ui`
+
 ## Output Format
 
 After collecting agent reports, present:
@@ -97,7 +152,7 @@ After collecting agent reports, present:
 3. **Synthesis** — if multiple agents, highlight where their understanding diverged. If only one agent was used, display the heading and write: `_Single agent review, no divergence possible._`
 4. **Proposals** — after presenting the report, display three separate tables (one per category). Omit a table if that category has no findings. Priority: High = must fix, Med = should fix, Low = nice to have.
 
-Output all responses in the language the user uses to interact with Claude. If the language cannot be determined, default to English.
+Output all asks / notifications / responses / reports in the language the user uses to interact with Claude. If the language cannot be determined, default to English.
 
 ## Example
 
