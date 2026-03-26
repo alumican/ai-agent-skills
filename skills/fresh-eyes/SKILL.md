@@ -58,11 +58,22 @@ When the user specifies a perspective, focus the agent's questions on that angle
 
 When the user provides a perspective, adapt the questions. Examples:
 
+**Topic-based**
 - **"API usability"** — Is the public API clear? Are exports well-organized? Could you use this as a library?
 - **"onboarding"** — Could a new developer get productive quickly? What's the learning curve?
 - **"documentation"** — Are the docs accurate, complete, and well-structured? Any gaps?
 - **"architecture"** — Is the design sound? Are responsibilities well-separated? Any coupling issues?
 - **"security"** — Any obvious vulnerabilities? Input validation? Secret handling?
+- **"performance"** — Any obvious bottlenecks? Unnecessary allocations, blocking calls, or large payloads?
+- **"testability"** — Is the code easy to test? Are dependencies injectable? Are side effects isolated?
+- **"maintainability"** — Is it easy to change? Are abstractions stable? Is there accidental complexity?
+
+**Persona-based** — adopt the persona and report as that person would experience the project:
+- **"new user"** — You have never used this before. What confuses you in the first 5 minutes? Where do you get stuck?
+- **"external contributor"** — You want to submit a PR. Can you understand the codebase and contribution process from what's here?
+- **"ops engineer"** — You have to deploy and monitor this. What's missing from an operational standpoint?
+- **"security auditor"** — You are reviewing this for a compliance audit. What raises flags?
+- **"non-technical stakeholder"** — You need to explain what this does to a manager. Does the README make that possible?
 
 ## Multiple Agents
 
