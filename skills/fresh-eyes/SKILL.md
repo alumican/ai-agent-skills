@@ -135,13 +135,17 @@ Before spawning any subagent(s), notify the user with the following information:
 - For multi-agent reviews, repeat the above for each agent (one line per agent)
 
 Example (single agent):
-> Starting fresh-eyes review — spawning 1 subagent:
-> - Agent 1 (Opus): `./src`
+```
+Starting fresh-eyes review — spawning 1 subagent:
+- Agent 1 (Opus): `./src`
+```
 
 Example (multi-agent):
-> Starting fresh-eyes review — spawning 2 subagents:
-> - Agent 1(Opus): `./src/api`
-> - Agent 2(Opus): `./src/ui`
+```
+Starting fresh-eyes review — spawning 2 subagents:
+- Agent 1(Opus): `./src/api`
+- Agent 2(Opus): `./src/ui`
+```
 
 ## Output Format
 
