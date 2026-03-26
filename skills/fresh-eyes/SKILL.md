@@ -12,13 +12,13 @@ Spawn isolated Claude agents to review a directory with zero prior context. Each
 For example:
 
 ```
-/fresh-eyes                              → review current directory, general perspective
-/fresh-eyes apps/my-app                  → review app directory, general perspective
-/fresh-eyes packages/ "API usability"    → review specific directory, with engineering perspective
-/fresh-eyes src/ "security"              → review src directory, with an security perspective
-/fresh-eyes dst/ "new user"              → review dst directory, as a user persona
-/fresh-eyes dst/ "external contributor"  → review dst directory, as a engineer persona
-/fresh-eyes . "non-technical stakeholder" → review current directory, as a non-technical stakeholder
+/fresh-eyes                               → review current directory, general perspective
+/fresh-eyes apps/my-app                   → review app, general perspective
+/fresh-eyes packages/ "API usability"     → review package, with library usability perspective
+/fresh-eyes src/ "security"               → review src, with an security perspective
+/fresh-eyes dst/ "external contributor"   → review src, as a objective engineering persona
+/fresh-eyes dst/ "new user"               → review dst, as a user persona
+/fresh-eyes . "non-technical stakeholder" → review current directory, as a boss persona
 ```
 
 ## How It Works
