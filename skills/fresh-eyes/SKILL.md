@@ -5,7 +5,7 @@ description: Use this skill when you want an objective outside perspective on co
 
 # Fresh Eyes
 
-Spawn isolated Claude agents to review a directory with zero prior context. Each agent can ONLY see files inside the target directory — no hints, no background, no conversation history. They report what they understand, what confuses them, and what's missing.
+Spawn isolated Claude agents to review a directory with zero prior context. Each agent can ONLY read files inside the target directory — no hints, no background, no conversation history. Agents are read-only: they must never create, edit, or delete files. They report what they understand, what confuses them, and what's missing.
 
 ## Usage
 
@@ -14,10 +14,10 @@ For example:
 ```
 /fresh-eyes                               → review current directory, general perspective
 /fresh-eyes apps/my-app                   → review app, general perspective
-/fresh-eyes packages "API usability"     → review package, with library usability perspective
-/fresh-eyes src "security"               → review src, with an security perspective
-/fresh-eyes dst "external contributor"   → review src, as a objective engineering persona
-/fresh-eyes dst "new user"               → review dst, as a user persona
+/fresh-eyes packages "API usability"      → review package, with library usability perspective
+/fresh-eyes src "security"                → review src, with an security perspective
+/fresh-eyes dst "external contributor"    → review src, as a objective engineering persona
+/fresh-eyes dst "new user"                → review dst, as a user persona
 /fresh-eyes . "non-technical stakeholder" → review current directory, as a boss persona
 ```
 
@@ -30,6 +30,7 @@ For example:
 ## Agent Spawning Rules
 
 - Each agent's prompt must:
+  - State clearly that the agent is read-only: it must NOT create, edit, or delete any files
   - State clearly that the agent has ONLY access to the specified directory
   - State clearly that the agent has NO prior context about the project
   - List the specific questions to answer (see templates below)
