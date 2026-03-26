@@ -75,8 +75,75 @@ When using multiple agents, launch them **in parallel**.
 After collecting agent reports, present:
 
 1. **What's working well** — things the agent understood clearly
-2. **Issues found** — categorized by severity (bug / inconsistency / gap / suggestion)
-3. **Synthesis** — if multiple agents, highlight where their understanding diverged
+2. **Issues found** — categorized by severity (bug / inconsistency / gap / suggestion). If no issues were found, display the heading and write: `_No issues found — [brief reason, e.g. "code and docs were fully consistent"]._`
+3. **Synthesis** — if multiple agents, highlight where their understanding diverged. If only one agent was used, display the heading and write: `_Single agent review, no divergence possible._`
+4. **Proposals** — after presenting the report, display three separate tables (one per category). Omit a table if that category has no findings. Priority: High = must fix, Med = should fix, Low = nice to have.
+
+Output all responses in the language the user uses to interact with Claude. If the language cannot be determined, default to English.
+
+## Example
+
+```
+---
+
+## What's working well
+- aaa
+- bbb
+
+---
+
+## Issues found
+
+### Bugs
+- aaa
+- bbb
+
+### Inconsistency
+- aaa
+- bbb
+
+### Gaps
+- aaa
+- bbb
+
+### Suggestions
+- aaa
+- bbb
+
+---
+
+## Synthesis
+- aaa
+- bbb
+
+---
+
+## Proposals
+
+### Bugs
+| # | Issue | Proposed Action | Priority |
+|---|-------|-----------------|----------|
+| 1 | … | … | High / Med / Low |
+
+### Inconsistency
+| # | Issue | Proposed Action | Priority |
+|---|-------|-----------------|----------|
+| 1 | … | … | High / Med / Low |
+
+### Gaps
+| # | Issue | Proposed Action | Priority |
+|---|-------|-----------------|----------|
+| 1 | … | … | High / Med / Low |
+
+### Suggestions
+| # | Issue | Proposed Action | Priority |
+|---|-------|-----------------|----------|
+| 1 | … | … | High / Med / Low |
+
+### Short Summary
+[Short Summary of key issues and proposed actions, e.g. "The API docs are missing examples, which made it hard to understand how to use the library. Adding examples would be a high priority fix."]
+---
+```
 
 ## Important
 
