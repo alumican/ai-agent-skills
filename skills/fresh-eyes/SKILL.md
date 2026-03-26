@@ -14,10 +14,10 @@ For example:
 ```
 /fresh-eyes                               → review current directory, general perspective
 /fresh-eyes apps/my-app                   → review app, general perspective
-/fresh-eyes packages/ "API usability"     → review package, with library usability perspective
-/fresh-eyes src/ "security"               → review src, with an security perspective
-/fresh-eyes dst/ "external contributor"   → review src, as a objective engineering persona
-/fresh-eyes dst/ "new user"               → review dst, as a user persona
+/fresh-eyes packages "API usability"     → review package, with library usability perspective
+/fresh-eyes src "security"               → review src, with an security perspective
+/fresh-eyes dst "external contributor"   → review src, as a objective engineering persona
+/fresh-eyes dst "new user"               → review dst, as a user persona
 /fresh-eyes . "non-technical stakeholder" → review current directory, as a boss persona
 ```
 
