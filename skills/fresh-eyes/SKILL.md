@@ -82,5 +82,5 @@ After collecting agent reports, present:
 
 - The agent must be **brutally honest**. Instruct it to report confusion, not paper over it.
 - Never pre-brief the agent about the project. The whole point is zero context.
-- The agent should read docs/README/CLAUDE.md FIRST, then code. This tests whether the docs actually work.
+- The agent should read docs, README, or CLAUDE.md FIRST, then code. This tests whether the docs actually work.
 - If the agent finds something that contradicts the docs, that's a high-value finding.
