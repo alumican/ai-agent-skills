@@ -15,10 +15,14 @@ Install directly via Claude Code's plugin system:
 ```
 # Add this marketplace (one-time setup)
 /plugin marketplace add alumican/ai-agent-skills
+```
 
+```
 # Install the fresh-eyes skill
 /plugin install fresh-eyes@ai-agent-skills
+```
 
+```
 # Use it
 /fresh-eyes
 /fresh-eyes path/to/dir
