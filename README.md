@@ -22,13 +22,13 @@ Install directly via Claude Code's plugin system:
 
 ```
 # 3. Use it
-/fresh-eyes                                # general review of current directory
-/fresh-eyes path/to/dir                    # specific directory
-/fresh-eyes src/ "API usability"           # topic perspective
-/fresh-eyes src/ "security"                # topic perspective
-/fresh-eyes dst/ "new user"                # persona perspective
-/fresh-eyes dst/ "external contributor"    # persona perspective
-/fresh-eyes . "non-technical stakeholder"  # persona perspective
+/fresh-eyes                               # general review of current directory
+/fresh-eyes path/to/dir                   # general review of specific directory
+/fresh-eyes src/ "API usability"          # topic perspective of src directory
+/fresh-eyes src/ "security"               # topic perspective of src directory
+/fresh-eyes dst/ "new user"               # persona perspective of dst directory
+/fresh-eyes dst/ "external contributor"   # persona perspective of dst directory
+/fresh-eyes . "non-technical stakeholder" # persona perspective of current directory
 ```
 
 Update later with `/plugin marketplace update ai-agent-skills`.
