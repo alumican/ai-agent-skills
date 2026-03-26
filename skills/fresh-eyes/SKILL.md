@@ -141,7 +141,9 @@ Output all responses in the language the user uses to interact with Claude. If t
 | 1 | … | … | High / Med / Low |
 
 ### Short Summary
+
 [Short Summary of key issues and proposed actions, e.g. "The API docs are missing examples, which made it hard to understand how to use the library. Adding examples would be a high priority fix."]
+
 ---
 ```
 
