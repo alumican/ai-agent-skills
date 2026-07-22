@@ -1,0 +1,10 @@
+{
+  "name": "session-handover",
+  "version": "1.0.0",
+  "description": "Carry cross-session context via HANDOVER.md — intent, design rationale, rejected options, and verification state that code and git history don't preserve. Provides /handover, /handover-load, and auto-wiring PreCompact/SessionStart hooks.",
+  "author": {
+    "name": "alumican"
+  },
+  "repository": "https://github.com/alumican/ai-agent-skills",
+  "license": "MIT"
+}

@@ -4,16 +4,23 @@
     "name": "alumican"
   },
   "metadata": {
-    "description": "Reusable skills for Claude Code — isolated-agent reviews and more."
+    "description": "Reusable skills for Claude Code — isolated-agent reviews, session handover, and more."
   },
   "plugins": [
     {
       "name": "fresh-eyes",
-      "source": {
-        "source": "github",
-        "repo": "alumican/ai-agent-skills"
-      },
+      "source": "./plugins/fresh-eyes",
       "description": "Spawn isolated agents to review code/docs with zero prior context",
+      "author": {
+        "name": "alumican"
+      },
+      "license": "MIT",
+      "repository": "https://github.com/alumican/ai-agent-skills"
+    },
+    {
+      "name": "session-handover",
+      "source": "./plugins/session-handover",
+      "description": "Carry cross-session context via HANDOVER.md — intent, design rationale, rejected options, and verification state that code and git history don't preserve",
       "author": {
         "name": "alumican"
       },
