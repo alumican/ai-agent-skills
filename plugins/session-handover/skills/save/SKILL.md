@@ -1,9 +1,9 @@
 ---
-name: handover
+name: save
 description: Generate and update HANDOVER.md — a session handover note that carries the context code and git history don't keep: user direction, design rationale, rejected options, and verification state. Run it at wave boundaries, before ending a session, or when context is getting long. Also invoked automatically by the PreCompact hook.
 ---
 
-# /handover — write the session handover note
+# /session-handover:save — write the session handover note
 
 ## Purpose (what problem this solves)
 
@@ -22,15 +22,15 @@ the same debates and redoes the same mistakes. That is the core value of this sk
 - Before ending a session
 - When context is getting long and compaction feels near
 - **Automatically**: the PreCompact hook (`hooks/precompact-handover.sh`, bundled with this plugin)
-  generates it headless just before compaction. But that is a safety net — the in-session /handover
-  has richer context and higher quality. **Manual is primary; the hook is the backup.**
+  generates it headless just before compaction. But that is a safety net — the in-session
+  /session-handover:save has richer context and higher quality. **Manual is primary; the hook is the backup.**
 
 ## Output language
 
 Write `HANDOVER.md` in the language you use with the user (default to English if it can't be
 determined). Preserve the user's own words verbatim in their original language (see "Writing
 discipline"). The **section numbers** (§1–§10, and §3a/§3b/§3c) are stable anchors that the hooks and
-`/handover-load` rely on — keep them regardless of language.
+`/session-handover:load` rely on — keep them regardless of language.
 
 ## Steps
 
@@ -79,7 +79,7 @@ already-rejected options?** If any of the three is "no," fill that gap before cl
 ```markdown
 # HANDOVER — session handover note
 
-> Generated: YYYY-MM-DD HH:MM / method: in-session /handover (or "PreCompact auto-generation")
+> Generated: YYYY-MM-DD HH:MM / method: in-session /session-handover:save (or "PreCompact auto-generation")
 > This file is fully overwritten each time — a volatile snapshot. Permanent info lives in CLAUDE.md and the docs.
 
 ## 1. Session subject (1–2 lines)
@@ -175,8 +175,8 @@ What this session was for. The user's original request in one line.
   - **SessionStart** → `hooks/sessionstart-handover.sh`: if a HANDOVER.md exists, injects it into context at
     session start.
 - The read side has three paths: ① the SessionStart hook's auto-injection (primary) → ② the project's
-  CLAUDE.md "read it if present" rule, if it has one → ③ the manual command `/handover-load` (bundled with
-  this plugin).
+  CLAUDE.md "read it if present" rule, if it has one → ③ the manual command `/session-handover:load`
+  (bundled with this plugin).
 - Environment variables: `HANDOVER_MODEL` (model for auto-generation, default `sonnet`) / `HANDOVER_DISABLE=1`
   (disable auto-generation) / `HANDOVER_AUTO_CREATE=1` (generate even without an existing HANDOVER.md).
   Activity is logged to `<project>/.claude/handover.log`.

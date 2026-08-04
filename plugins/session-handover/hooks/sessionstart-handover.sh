@@ -1,7 +1,7 @@
 #!/bin/bash
 # SessionStart hook (session-handover plugin): inject the current project's HANDOVER.md
 # into context at session start, if one exists. No HANDOVER.md -> silent no-op (natural
-# opt-in: only projects that have run /handover get an injection). stdout on exit 0 is
+# opt-in: only projects that have run /session-handover:save get an injection). stdout on exit 0 is
 # added to the session context.
 set -u
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"

@@ -1,13 +1,13 @@
 #!/bin/bash
 # PreCompact hook (session-handover plugin): a safety net that regenerates the current
 # project's HANDOVER.md right before context compaction. The PRIMARY path is the
-# in-session /handover skill (richer context, higher quality); this backup exists for
+# in-session /session-handover:save skill (richer context, higher quality); this backup exists for
 # when compaction happens before a manual run.
 #
 # Policy:
 #   - fail-open: this hook's failure must never block compaction. Every path exits 0.
 #   - opt-in: only acts in projects that ALREADY have a HANDOVER.md (a project opts in by
-#     running /handover once). Set HANDOVER_AUTO_CREATE=1 to generate on the first compaction too.
+#     running /session-handover:save once). Set HANDOVER_AUTO_CREATE=1 to generate on the first compaction too.
 #
 # Self-location is resolved from this script's own path, so it works whether invoked via
 # ${CLAUDE_PLUGIN_ROOT} or directly. The target project comes from $CLAUDE_PROJECT_DIR.
@@ -17,7 +17,7 @@ SELF_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLUGIN_ROOT="$(cd "$SELF_DIR/.." && pwd)"
 PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 
-SKILL="$PLUGIN_ROOT/skills/handover/SKILL.md"
+SKILL="$PLUGIN_ROOT/skills/save/SKILL.md"
 EXTRACTOR="$SELF_DIR/extract-transcript.mjs"
 HANDOVER="$PROJECT_DIR/HANDOVER.md"
 LOG="$PROJECT_DIR/.claude/handover.log"

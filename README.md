@@ -7,7 +7,7 @@ Reusable skills for AI coding agents (Claude Code, etc.), distributed as a plugi
 | Plugin | Commands | Description |
 |--------|----------|-------------|
 | [fresh-eyes](plugins/fresh-eyes/) | `/fresh-eyes` | Spawn isolated agents to review code/docs with zero prior context |
-| [session-handover](plugins/session-handover/) | `/handover`, `/handover-load` | Carry cross-session context via `HANDOVER.md` — intent, design rationale, rejected options, and verification state that code and git history don't preserve |
+| [session-handover](plugins/session-handover/) | `/session-handover:save`, `/session-handover:load` | Carry cross-session context via `HANDOVER.md` — intent, design rationale, rejected options, and verification state that code and git history don't preserve |
 
 ## Plugin Marketplace
 
@@ -41,14 +41,14 @@ Update later with `/plugin marketplace update ai-agent-skills`.
 ### session-handover
 
 ```
-/handover       # write/update this project's HANDOVER.md (run at wave end / before ending a session)
-/handover-load  # load a previous HANDOVER.md and restore working context
+/session-handover:save  # write/update this project's HANDOVER.md (run at wave end / before ending a session)
+/session-handover:load  # load a previous HANDOVER.md and restore working context
 ```
 
 It also ships two hooks that **auto-wire on install** (no manual `settings.json` editing):
 
 - **SessionStart** — injects the project's `HANDOVER.md` into context at session start, if one exists.
-- **PreCompact** — a safety net that regenerates `HANDOVER.md` right before context compaction. Opt-in: it only acts in projects that already have a `HANDOVER.md` (create the first one with `/handover`, or set `HANDOVER_AUTO_CREATE=1` to generate from the first compaction).
+- **PreCompact** — a safety net that regenerates `HANDOVER.md` right before context compaction. Opt-in: it only acts in projects that already have a `HANDOVER.md` (create the first one with `/session-handover:save`, or set `HANDOVER_AUTO_CREATE=1` to generate from the first compaction).
 
 `HANDOVER.md` is written in the language you work in with the user (default English). Env vars: `HANDOVER_MODEL` (auto-generation model, default `sonnet`), `HANDOVER_DISABLE=1` (disable auto-generation), `HANDOVER_AUTO_CREATE=1` (generate even without an existing `HANDOVER.md`). Auto-generation logs to `<project>/.claude/handover.log`.
 
@@ -79,8 +79,8 @@ plugins/
 └── session-handover/
     ├── .claude-plugin/plugin.json
     ├── skills/
-    │   ├── handover/SKILL.md
-    │   └── handover-load/SKILL.md
+    │   ├── save/SKILL.md
+    │   └── load/SKILL.md
     └── hooks/
         ├── hooks.json                 # auto-wires PreCompact + SessionStart on install
         ├── precompact-handover.sh

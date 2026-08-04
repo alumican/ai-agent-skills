@@ -1,15 +1,15 @@
 ---
-name: handover-load
+name: load
 description: Load HANDOVER.md (the previous session's handover note) and restore working context. A manual fallback for when the SessionStart hook's auto-injection isn't wired, or you can't tell whether it fired. It reads and reports; it does not modify files (except promoting not-yet-promoted directives into the docs).
 ---
 
-# /handover-load — load the handover note
+# /session-handover:load — load the handover note
 
 ## Purpose
 
 Loading `HANDOVER.md` is normally done automatically by the SessionStart hook. This command exists to
 restore the handover **explicitly and reliably** when that hook isn't wired, or when you can't confirm it
-fired. It is the read-side counterpart to the write side (/handover).
+fired. It is the read-side counterpart to the write side (/session-handover:save).
 
 ## Steps
 
@@ -53,5 +53,5 @@ However:
 
 ## What this skill does NOT do
 
-- Generate or overwrite HANDOVER.md (that's /handover's job)
+- Generate or overwrite HANDOVER.md (that's /session-handover:save's job)
 - Auto-append a read rule into the project's CLAUDE.md (that setup is done by hand, once)
