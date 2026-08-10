@@ -26,6 +26,16 @@
       },
       "license": "MIT",
       "repository": "https://github.com/alumican/ai-agent-skills"
+    },
+    {
+      "name": "design-system-craft",
+      "source": "./plugins/design-system-craft",
+      "description": "Reproduce Figma designs exactly from structured data (not screenshots), and keep a growing design system honest",
+      "author": {
+        "name": "alumican"
+      },
+      "license": "MIT",
+      "repository": "https://github.com/alumican/ai-agent-skills"
     }
   ]
 }
