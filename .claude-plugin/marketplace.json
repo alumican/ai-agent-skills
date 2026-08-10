@@ -28,8 +28,8 @@
       "repository": "https://github.com/alumican/ai-agent-skills"
     },
     {
-      "name": "design-system-craft",
-      "source": "./plugins/design-system-craft",
+      "name": "figma-translator",
+      "source": "./plugins/figma-translator",
       "description": "Reproduce Figma designs exactly from structured data (not screenshots), and keep a growing design system honest",
       "author": {
         "name": "alumican"

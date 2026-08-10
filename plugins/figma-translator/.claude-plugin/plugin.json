@@ -1,5 +1,5 @@
 {
-  "name": "design-system-craft",
+  "name": "figma-translator",
   "version": "1.0.0",
   "description": "Build a design system from Figma without guessing, and keep it honest as it grows. Two skills: figma-transcribe (read structure, dimensions, colours and variables from the Dev Mode MCP instead of eyeballing screenshots — works without MCP registration) and figma-design-system-discipline (the practices that stop a shared UI layer from quietly drifting).",
   "author": {

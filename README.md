@@ -8,7 +8,7 @@ Reusable skills for AI coding agents (Claude Code, etc.), distributed as a plugi
 |--------|----------|-------------|
 | [fresh-eyes](plugins/fresh-eyes/) | `/fresh-eyes` | Spawn isolated agents to review code/docs with zero prior context |
 | [session-handover](plugins/session-handover/) | `/session-handover:save`, `/session-handover:load` | Carry cross-session context via `HANDOVER.md` — intent, design rationale, rejected options, and verification state that code and git history don't preserve |
-| [design-system-craft](plugins/design-system-craft/) | auto-invoked (or `/design-system-craft:figma-transcribe`, `/design-system-craft:figma-design-system-discipline`) | Reproduce Figma designs exactly from structured data instead of screenshots, and keep a growing design system honest |
+| [figma-translator](plugins/figma-translator/) | auto-invoked (or `/figma-translator:figma-transcribe`, `/figma-translator:figma-design-system-discipline`) | Reproduce Figma designs exactly from structured data instead of screenshots, and keep a growing design system honest |
 
 ## Plugin Marketplace
 
@@ -21,7 +21,7 @@ Install directly via Claude Code's plugin system:
 # 2. Install the plugins you want
 /plugin install fresh-eyes@ai-agent-skills
 /plugin install session-handover@ai-agent-skills
-/plugin install design-system-craft@ai-agent-skills
+/plugin install figma-translator@ai-agent-skills
 ```
 
 Update later with `/plugin marketplace update ai-agent-skills`.
@@ -56,7 +56,7 @@ It also ships two hooks that **auto-wire on install** (no manual `settings.json`
 
 Recommended per-project `.gitignore` entries: `HANDOVER.md`, `.claude/handover.log`, `.claude/.handover.lock` (the handover file is a volatile snapshot).
 
-### design-system-craft
+### figma-translator
 
 Two skills that load themselves when the work matches — no command needed.
 
@@ -102,7 +102,7 @@ plugins/
 │       ├── precompact-handover.sh
 │       ├── sessionstart-handover.sh
 │       └── extract-transcript.mjs
-└── design-system-craft/
+└── figma-translator/
     ├── .claude-plugin/plugin.json
     └── skills/
         ├── figma-transcribe/
