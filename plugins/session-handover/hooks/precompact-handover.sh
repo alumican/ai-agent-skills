@@ -81,6 +81,7 @@ PROMPT="You are the author of a session handover note. Do the following in order
 Constraints:
 - The only write target is ${PROJECT_DIR}/HANDOVER.md. Do not modify docs or any other file.
 - Write in the language used in the transcript excerpt (default English if it can't be determined). Keep the section numbers (§1-§10, §3c) as-is.
+- Reproduce the template's header block, including the '⚠ Notice to AI agents - do not write to this file' paragraph, at the top of the file. It is a standing rule for later sessions, not boilerplate to drop.
 - Header 'method' field: 'PreCompact auto-generation (trigger: ${TRIGGER})'; generated timestamp ${TIMESTAMP}.
 - Do not fabricate facts absent from the excerpt. Mark anything you can't determine from it as '(unknown - auto-generated)'.
 - Carry the user's important instructions and corrections verbatim (follow SKILL.md's 'Writing discipline').

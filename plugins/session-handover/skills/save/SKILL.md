@@ -16,6 +16,32 @@ Good handover is measured by **preservation of intent**, not by volume of facts.
 about, what frustrated them, which direction they rejected — if that is lost, the next session repeats
 the same debates and redoes the same mistakes. That is the core value of this skill.
 
+## ⚠ HANDOVER.md is write-restricted (hard rule)
+
+`HANDOVER.md` has exactly one job: **carrying context across a session boundary.** It is **not** a progress
+log, **not** a scratchpad, **not** a TODO list, **not** a place to park notes while you work.
+
+**Do not write to `HANDOVER.md` outside the paths in the table below.** If, mid-task, you feel the urge to
+record progress somewhere, that urge belongs elsewhere — the project's worklog/devlog, `CLAUDE.md` and the
+design docs, your reply to the user, or nowhere at all.
+
+| The only writers | What it may write |
+|---|---|
+| `/session-handover:save` (this skill) | Full overwrite from the template — the only general write path |
+| The PreCompact hook (`hooks/precompact-handover.sh`) | The same full overwrite, headless, as a safety net |
+| `/session-handover:load` | One narrow edit: moving a promoted directive from §3c to §3a |
+| `/session-handover:trash` | Retiring the file (moves it to the OS trash) once its handover has been consumed |
+
+Everything else is prohibited: appending a progress line mid-task, jotting a reminder between steps, using
+it as a notebook, letting another skill or hook touch it. Two reasons, and both matter:
+
+1. **It is destroyed anyway.** Every save rewrites the whole file, so hand-added notes vanish without warning.
+2. **It dilutes the handover.** The value of this file is preservation of intent. Progress chatter pushes out
+   the "why", and the next session pays for it.
+
+Keep this rule stated in the generated file itself — the template below opens with a notice to that effect;
+reproduce it verbatim every time you write `HANDOVER.md`.
+
 ## When to run
 
 - At a wave boundary / major checkpoint (ideally right before a completion report)
@@ -81,6 +107,14 @@ already-rejected options?** If any of the three is "no," fill that gap before cl
 
 > Generated: YYYY-MM-DD HH:MM / method: in-session /session-handover:save (or "PreCompact auto-generation")
 > This file is fully overwritten each time — a volatile snapshot. Permanent info lives in CLAUDE.md and the docs.
+>
+> **⚠ Notice to AI agents — do not write to this file.**
+> It exists solely to hand context from one session to the next. It is **not** a progress log, a scratchpad,
+> or a TODO list, and you must not record work notes here as you go: the next `/session-handover:save`
+> overwrites the whole file, so such notes are destroyed, and until then they crowd out the intent the next
+> session came for. The only writers are `/session-handover:save` (and its PreCompact hook) for a full
+> rewrite, `/session-handover:load` for the §3c → §3a move, and `/session-handover:trash` for retiring it.
+> Progress belongs in the project's worklog; permanent rules belong in CLAUDE.md and the design docs.
 
 ## 1. Session subject (1–2 lines)
 
@@ -177,6 +211,11 @@ What this session was for. The user's original request in one line.
 - The read side has three paths: ① the SessionStart hook's auto-injection (primary) → ② the project's
   CLAUDE.md "read it if present" rule, if it has one → ③ the manual command `/session-handover:load`
   (bundled with this plugin).
+- The cycle ends with `/session-handover:trash`: once the handover has been consumed and its live content
+  has moved to its permanent home, that command moves `HANDOVER.md` to the OS trash (never `rm` — the file is
+  usually gitignored) so no session resumes from a stale next-move. Note that retiring it also stands the
+  PreCompact safety net down for the project (its opt-in guard keys off the file's existence), until the next
+  `/session-handover:save`.
 - Environment variables: `HANDOVER_MODEL` (model for auto-generation, default `sonnet`) / `HANDOVER_DISABLE=1`
   (disable auto-generation) / `HANDOVER_AUTO_CREATE=1` (generate even without an existing HANDOVER.md).
   Activity is logged to `<project>/.claude/handover.log`.

@@ -51,7 +51,21 @@ However:
   **put them in the report as a proposal instead**.
 - Move promoted items from §3c to §3a in HANDOVER.md (with the destination path attached).
 
+## Writing to HANDOVER.md is restricted
+
+`HANDOVER.md` is a session-handover document and nothing else — **not** a progress log, **not** a scratchpad,
+**not** a TODO list. Having read it, do not start writing into it as the session goes on: no progress lines,
+no reminders, no "I'll note this here for later". The next `/session-handover:save` overwrites the entire
+file, so those notes are lost anyway, and meanwhile they dilute the intent the handover exists to carry.
+
+This command's **only** permitted write is the Step 5 bookkeeping move of a promoted directive from §3c to
+§3a. Everything else routes elsewhere: work notes → the project's worklog/devlog, permanent rules →
+`CLAUDE.md` and the design docs, a fresh snapshot of where things stand → `/session-handover:save`, and
+retiring a consumed note → `/session-handover:trash`.
+
 ## What this skill does NOT do
 
 - Generate or overwrite HANDOVER.md (that's /session-handover:save's job)
+- Write anything into HANDOVER.md beyond the §3c → §3a move above
+- Retire HANDOVER.md when you're done with it (that's /session-handover:trash's job)
 - Auto-append a read rule into the project's CLAUDE.md (that setup is done by hand, once)

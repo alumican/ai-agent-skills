@@ -7,7 +7,7 @@ Reusable skills for AI coding agents (Claude Code, etc.), distributed as a plugi
 | Plugin | Commands | Description |
 |--------|----------|-------------|
 | [fresh-eyes](plugins/fresh-eyes/) | `/fresh-eyes` | Spawn isolated agents to review code/docs with zero prior context |
-| [session-handover](plugins/session-handover/) | `/session-handover:save`, `/session-handover:load` | Carry cross-session context via `HANDOVER.md` — intent, design rationale, rejected options, and verification state that code and git history don't preserve |
+| [session-handover](plugins/session-handover/) | `/session-handover:save`, `/session-handover:load`, `/session-handover:trash` | Carry cross-session context via `HANDOVER.md` — intent, design rationale, rejected options, and verification state that code and git history don't preserve |
 | [figma-translator](plugins/figma-translator/) | auto-invoked (or `/figma-translator:figma-transcribe`, `/figma-translator:figma-design-system-discipline`) | Reproduce Figma designs exactly from structured data instead of screenshots, and keep a growing design system honest |
 
 ## Plugin Marketplace
@@ -43,9 +43,16 @@ Update later with `/plugin marketplace update ai-agent-skills`.
 ### session-handover
 
 ```
-/session-handover:save  # write/update this project's HANDOVER.md (run at wave end / before ending a session)
-/session-handover:load  # load a previous HANDOVER.md and restore working context
+/session-handover:save   # write/update this project's HANDOVER.md (run at wave end / before ending a session)
+/session-handover:load   # load a previous HANDOVER.md and restore working context
+/session-handover:trash  # retire a consumed HANDOVER.md (moves it to the OS trash, never rm)
 ```
+
+`HANDOVER.md` is a **handover document, not a progress log or a scratchpad**. The skills instruct agents not
+to jot notes into it as they work — every `save` rewrites the file whole, so such notes are destroyed, and
+until then they crowd out the intent the next session came for. The generated file opens with that notice,
+and the SessionStart injection repeats it. Work notes belong in the project's worklog, permanent rules in
+`CLAUDE.md` and the design docs.
 
 It also ships two hooks that **auto-wire on install** (no manual `settings.json` editing):
 
@@ -96,7 +103,8 @@ plugins/
 │   ├── .claude-plugin/plugin.json
 │   ├── skills/
 │   │   ├── save/SKILL.md
-│   │   └── load/SKILL.md
+│   │   ├── load/SKILL.md
+│   │   └── trash/SKILL.md
 │   └── hooks/
 │       ├── hooks.json             # auto-wires PreCompact + SessionStart on install
 │       ├── precompact-handover.sh

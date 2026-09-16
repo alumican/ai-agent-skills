@@ -11,6 +11,8 @@ HANDOVER="$PROJECT_DIR/HANDOVER.md"
 cat <<'HEADER'
 The previous session's handover note (HANDOVER.md) follows. Read it before starting work.
 In particular, handle "§3c Not yet promoted" first if present, and do not re-propose "§5 Rejected options".
+HANDOVER.md is a session-handover document, not a progress log or a scratchpad: do not write to it during
+this session. Use /session-handover:save to rewrite it, /session-handover:trash to retire it once consumed.
 --- HANDOVER.md ---
 HEADER
 cat "$HANDOVER"
